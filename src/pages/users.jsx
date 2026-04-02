@@ -412,10 +412,8 @@ function Users() {
   if (searchQuery) {
     filteredData = data.filter(
       (item) =>
-        (item.LastWatched !== undefined &&
-          item.LastWatched !== null &&
-          item.LastWatched.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        item.UserName.toLowerCase().includes(searchQuery.toLowerCase())
+        (item.LastWatched && String(item.LastWatched).toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (item.UserName && String(item.UserName).toLowerCase().includes(searchQuery.toLowerCase()))
     );
   }
   return (
