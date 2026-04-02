@@ -2,6 +2,12 @@
 
 **Jellystat** is a free and open source Statistics App for Jellyfin! (This project is still in development - expect some weirdness)
 
+## PROJECT UPDATE
+
+> Hi Everyone. Just wanted to give an update. A lot of bugs and issues keep pilling up, and since it was one of the first projects i made using Node.js there was alot that i learnt which could have been done better.</br></br>
+> I'v decided to rebuild Jellystat from the ground up, using a more modern architecture. This means new backend language, new frontend and possibly a new database provider, i may stick to Postgres but i also want to see if maybe theres something better. </br></br>
+> For now, what this means is , for a while, the project is not going to be updated. I will probably push a few fixes for any major bugs that are easily reproduced.
+
 ## Current Features
 
 - Session Monitoring and logging
