@@ -21,9 +21,11 @@ const pool = new Pool({
   database: _POSTGRES_DATABASE,
   password: _POSTGRES_PASSWORD,
   port: _POSTGRES_PORT,
-  max: 20, // Maximum number of connections in the pool
-  idleTimeoutMillis: 30000, // Close idle clients after 30 seconds
+  max: 8, // Maximum number of connections in the pool
+  idleTimeoutMillis: 15000, // Close idle clients after 15 seconds
   connectionTimeoutMillis: 2000, // Return an error after 2 seconds if connection could not be established
+  statement_timeout: 120000, // Kill queries running longer than 2 minutes
+  idle_in_transaction_session_timeout: 30000, // Kill idle-in-transaction after 30 seconds
   ...(process.env.POSTGRES_SSL_ENABLED === "true" ? { ssl: { rejectUnauthorized: _POSTGRES_SSL_REJECT_UNAUTHORIZED } } : {}),
 });
 

@@ -4,15 +4,15 @@
   "private": true,
   "main": "src/index.jsx",
   "scripts": {
-    "start-client": "vite --host --port 3001",
-    "start-server": "cd backend && nodemon --inspect server.js",
-    "start-dev": "concurrently \"npm run start-server\" \"npm run start-client\"",
-    "deploy-local": "npm run build && npm run start-server",
+    "start-client": "bunx --bun vite --host --port 3001",
+    "start-server": "bun --watch backend/server.js",
+    "start-dev": "concurrently \"bun run start-server\" \"bun run start-client\"",
+    "deploy-local": "bun run build && bun run start-server",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "build": "vite build",
-    "start-app": "cd backend && node server.js",
-    "start": "cd backend && node server.js"
+    "preview": "bunx --bun vite preview",
+    "build": "bunx --bun vite build",
+    "start-app": "bun backend/server.js",
+    "start": "bun backend/server.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -109,5 +109,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "trustedDependencies": [
+    "@swc/core"
+  ]
 }

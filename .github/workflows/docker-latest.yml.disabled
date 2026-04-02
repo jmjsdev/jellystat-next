@@ -33,7 +33,7 @@ jobs:
       - name: Read version from package.json
         id: get_version
         run: |
-          VERSION=$(node -p "require('./package.json').version")
+          VERSION=$(jq -r '.version' package.json)
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           
       - name: Set up QEMU
@@ -62,4 +62,4 @@ jobs:
             cyfershepard/jellystat:${{ env.VERSION }}
             ghcr.io/cyfershepard/jellystat:latest
             ghcr.io/cyfershepard/jellystat:${{ env.VERSION }}
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          platforms: linux/amd64,linux/arm64

@@ -1,20 +1,19 @@
 # Stage 1: Build the application
-FROM node:22.21.1-bookworm-slim AS builder
+FROM oven/bun:1-slim AS builder
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm cache clean --force
-RUN npm install
+COPY package.json bun.lock* ./
+RUN bun install --frozen-lockfile
 
 COPY ./ ./
 COPY entry.sh ./
 
 # Build the application
-RUN npm run build
+RUN bun run build
 
 # Stage 2: Create the production image
-FROM node:22.21.1-bookworm-slim
+FROM oven/bun:1-slim
 
 RUN apt-get update && \
     apt-get install -yqq --no-install-recommends wget && \
